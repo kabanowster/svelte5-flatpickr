@@ -1,6 +1,6 @@
 {
     "name": "svelte5-flatpickr",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "flatpickr component for Svelte5",
     "scripts": {
         "build": "rollup -c",

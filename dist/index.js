@@ -3695,7 +3695,7 @@ function Flatpickr($$anchor, $$props) {
 			dates = value() ? Array.isArray(value()) ? value() : [value()] : [];
 		}
 
-		fp.setDate(dates.length > 0 ? [dates[0], dates[dates.length - 1]] : dates, false);
+		fp.setDate(dates.length > 1 ? [dates[0], dates[dates.length - 1]] : dates, false);
 		switch (dates.length) {
 			case 0:
 				set(inputValue, null);
