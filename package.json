@@ -2,19 +2,20 @@
     "name": "svelte5-flatpickr",
     "version": "1.0.0",
     "description": "flatpickr component for Svelte5",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/kabanowster/svelte5-flatpickr.git"
+        "url": "https://github.com/kabanowster/svelte5-flatpickr.git"
     },
-    "keywords": [
-        "svelte", "flatpickr"
-    ],
+    "keywords": ["svelte", "flatpickr"],
     "author": "kabanowster",
     "license": "GPL",
     "bugs": {
         "url": "https://github.com/kabanowster/svelte5-flatpickr/issues"
     },
-    "homepage": "https://github.com/kabanowster/svelte5-flatpickr#readme",
+    "homepage": "https://github.com/kabanowster/svelte5-flatpickr",
     "devDependencies": {
         "svelte": "latest"
     },
