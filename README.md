@@ -1,5 +1,5 @@
 ### Svelte5 flatpickr
-A simple text <input> component utilising [flatpickr](https://flatpickr.js.org/) package for date/time picking.
+A simple text input component utilising [flatpickr](https://flatpickr.js.org/) package for date/time picking.
 
 #### Attributes
 Set `options` for flatpickr as in official docs, can be updated during lifecycle of the component.
