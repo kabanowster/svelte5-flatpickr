@@ -19,6 +19,7 @@
         "svelte": "latest"
     },
     "dependencies": {
+        "date-fns": "latest",
         "flatpickr": "latest"
     }
 }
