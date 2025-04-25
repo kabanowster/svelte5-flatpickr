@@ -1,9 +1,16 @@
 {
 	"name": "svelte5-flatpickr",
-	"version": "1.1.1",
+	"version": "1.1.2",
+	"description": "A simple Svelte5 text input component, utilising flatpickr package for date/time picking.",
+	"homepage": "https://github.com/kabanowster/svelte5-flatpickr#readme",
+	"bugs": {
+		"url": "https://github.com/kabanowster/svelte5-flatpickr/issues"
+	},
+	"author": "Wiktor Kabanow",
+	"license": "MIT",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "svelte-kit sync && svelte-package",
+		"build": "vite build && npm run prepack",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"prepack": "svelte-kit sync && svelte-package && publint",
@@ -28,9 +35,11 @@
 		}
 	},
 	"peerDependencies": {
-		"date-fns": "^4.1.0",
-		"flatpickr": "^4.6.13",
 		"svelte": "^5.0.0"
+	},
+	"dependencies": {
+		"date-fns": "^4.1.0",
+		"flatpickr": "^4.6.13"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^4.0.0",
@@ -44,6 +53,6 @@
 		"vite": "^6.2.5"
 	},
 	"keywords": [
-		"svelte"
+		"svelte", "flatpickr", "component"
 	]
 }
