@@ -69,7 +69,7 @@
             } else {
                 value = dates;
             }
-        })
+        });
 
         return () => fp.destroy();
     })
