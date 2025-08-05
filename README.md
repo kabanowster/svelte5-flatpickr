@@ -11,12 +11,10 @@ With `noStartDateRender` and `noEndDateRender`, in case of range selection, the 
 
 `returnAllDatesWithinRange` will calculate and output to the component's `value` all dates within selected range in flatpickr (by default flatpickr outputs only begin and end dates in array).
 
-Other attributes are passed to the input element:
-`class`, `style`, `name`, `id`, `placeholder`, `required`, `onchange`, `onready`, `onopen`, `onclose`, `onupdate`, `onkeydown`, `onday`, `onmonth`, `onyear`, `ondestroy`, `onposition`, `onfocus`, `onblur`, `oninvalid`
+Other attributes passed to the input element:
+`class`, `style`, `name`, `id`, `placeholder`, `required`
 
 #### Trivia
-Input text is formatted (visualised) using either provided `options.formatDate` function or `options.dateFormat` string (flatpickr implementations).
-
 Applying hiding visibility or display styles to input element and `options.inline` property to true, will solely render the calendar picker (without input element).
 
 Tip: `noEndDateRender` with empty `rangeDelimiter` renders only begin date.

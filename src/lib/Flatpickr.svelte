@@ -1,10 +1,10 @@
 <script lang="ts">
-    import flatpickr from "flatpickr";
     import {onMount} from "svelte";
     import {addDays, compareAsc} from "date-fns";
+    import flatpickr from "flatpickr";
 
     let {options, value = $bindable(), rangeDelimiter, noEndDateRender, noStartDateRender, returnAllDatesWithinRange, ...attrs}: {
-        options: object,
+        options: flatpickr.default.Options.Options,
         value?: Date | Date[] | string | null,
         class?: string,
         style?: string,
@@ -15,47 +15,17 @@
         rangeDelimiter?: string,
         noEndDateRender?: boolean,
         noStartDateRender?: boolean,
-        returnAllDatesWithinRange?: boolean,
-        onchange?: (event: Event) => void,
-        onready?: (event: Event) => void,
-        onopen?: (event: Event) => void,
-        onclose?: (event: Event) => void,
-        onupdate?: (event: Event) => void,
-        onkeydown?: (event: Event) => void,
-        onday?: (event: Event) => void,
-        onmonth?: (event: Event) => void,
-        onyear?: (event: Event) => void,
-        ondestroy?: (event: Event) => void,
-        onposition?: (event: Event) => void,
-        onfocus?: (event: Event) => void,
-        onblur?: (event: Event) => void,
-        oninvalid?: (event: Event) => void
+        returnAllDatesWithinRange?: boolean
     } = $props();
 
-    let fp;
+    let fp: flatpickr.default.Instance;
     let input: Node;
     let inputValue: string | null | undefined = $state(undefined);
 
     const defaultRangeDelimiter = " - ";
 
-    const events = [
-        ["ready", "onReady"],
-        ["open", "onOpen"],
-        ["close", "onClose"],
-        ["change", "onChange"],
-        ["update", "onValueUpdate"],
-        ["keydown", "onKeyDown"],
-        ["day", "onDayCreate"],
-        ["month", "onMonthChange"],
-        ["year", "onYearChange"],
-        ["destroy", "onDestroy"],
-        ["position", "onPreCalendarPosition"]
-    ];
-
     onMount(() => {
         fp = flatpickr(input, options);
-
-        events.forEach(([name, hook]) => fp.config[hook].push((...detail) => input.dispatchEvent(new CustomEvent(name, {detail}))));
 
         // update input on fp date pick
         fp.config.onChange.push((dates: Date[]) => {
@@ -116,7 +86,7 @@
 
     function formatInput(date: Date): string | null {
         if (!fp || !date) return null;
-        return fp.config.formatDate ? fp.config.formatDate(date) : flatpickr.formatDate(date, fp.config.dateFormat);
+        return fp.config.formatDate ? fp.config.formatDate(date, fp.config.dateFormat, fp.config.locale as flatpickr.default.Locale) : fp.formatDate(date, fp.config.dateFormat);
     }
 
     function getDatesBetween(dates?: { startDate: Date; endDate: Date } | Date[]): Date[] {
