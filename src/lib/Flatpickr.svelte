@@ -12,6 +12,9 @@
         id?: string,
         placeholder?: string,
         required?: boolean,
+        readonly?: boolean,
+        disabled?: boolean,
+        form?: string,
         rangeDelimiter?: string,
         noEndDateRender?: boolean,
         noStartDateRender?: boolean,
@@ -19,10 +22,11 @@
     } = $props();
 
     let fp: flatpickr.default.Instance;
-    let input: Node;
+    let input: HTMLInputElement;
     let inputValue: string | null | undefined = $state(undefined);
 
     const defaultRangeDelimiter = " - ";
+    const isAccessible = $derived(!attrs.disabled && !attrs.readonly);
 
     onMount(() => {
         fp = flatpickr(input, options);
@@ -42,6 +46,19 @@
         });
 
         return () => fp.destroy();
+    })
+
+    $effect(() => {
+        const key = "clickOpens"
+        if (!isAccessible) {
+            fp.set(key, false);
+        } else {
+            if (options[key]) {
+                fp.set(key, options[key]);
+            } else {
+                fp.set(key, true);
+            }
+        }
     })
 
     // on options change
@@ -118,8 +135,19 @@
     }
 </script>
 
-<input type="text"
-       style="cursor: pointer !important;"
-       bind:this={input}
-       bind:value={inputValue}
-       {...attrs}/>
+    <input type="text"
+           class:enabled="{isAccessible}"
+           class:disabled="{!isAccessible}"
+           bind:this={input}
+           bind:value={inputValue}
+           {...attrs}/>
+
+<style>
+    .enabled {
+        cursor: pointer !important;
+    }
+
+    .disabled {
+        cursor: default !important;
+    }
+</style>
